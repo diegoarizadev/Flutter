@@ -24,6 +24,10 @@ class RandomWordsState extends State<RandomWords> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Generador de palabras'),
+        actions: <Widget>[
+          //Se agrega la opción para navegar a los favoritos.
+          IconButton(icon: Icon(Icons.list), onPressed: _pushSaved),
+        ],
       ),
       body:
           _buildSuggestions(), //lamar directamente a la biblioteca de generación de palabras
@@ -78,6 +82,37 @@ class RandomWordsState extends State<RandomWords> {
           }
         });
       },
+    );
+  }
+
+  void _pushSaved() {
+    Navigator.of(context).push(
+      MaterialPageRoute<void>(
+        builder: (BuildContext context) {
+          //Construir las filas para mostrar con las palabras seleccionadas
+          final Iterable<ListTile> tiles = _saved.map(
+            (WordPair pair) {
+              return ListTile(
+                title: Text(
+                  pair.asPascalCase,
+                  style: _biggerFont,
+                ),
+              );
+            },
+          );
+          final List<Widget> divided = ListTile.divideTiles(
+            //División de cada fila.
+            context: context,
+            tiles: tiles,
+          ).toList();
+          return Scaffold( //Retorna un AppBar 
+            appBar: AppBar(
+              title: Text('Sugerencias guardadas'),
+            ),
+            body: ListView(children: divided),
+          );
+        },
+      ),
     );
   }
 }

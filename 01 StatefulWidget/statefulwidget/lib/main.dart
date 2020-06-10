@@ -7,7 +7,12 @@ class MyAppN0rf3n extends StatelessWidget {
   //StatelessWidget -> Hace la app un widget
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(title: 'Welcome to App N0rf3n', home: RandomWords());
+    return MaterialApp(
+        title: 'Welcome to App N0rf3n',
+        theme: ThemeData( //Se agrega un tema
+          primaryColor: Colors.black,
+        ),
+        home: RandomWords());
   }
 }
 
@@ -105,7 +110,8 @@ class RandomWordsState extends State<RandomWords> {
             context: context,
             tiles: tiles,
           ).toList();
-          return Scaffold( //Retorna un AppBar 
+          return Scaffold(
+            //Retorna un AppBar
             appBar: AppBar(
               title: Text('Sugerencias guardadas'),
             ),

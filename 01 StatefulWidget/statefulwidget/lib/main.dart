@@ -7,25 +7,26 @@ class MyAppN0rf3n extends StatelessWidget {
   //StatelessWidget -> Hace la app un widget
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Welcome to App N0rf3n',
-      home: RandomWords()
-    );
+    return MaterialApp(title: 'Welcome to App N0rf3n', home: RandomWords());
   }
 }
 
 class RandomWordsState extends State<RandomWords> {
   //State class
-  final _suggestions = <WordPair>[]; //Almacena las palabra sugeridas
-  final _biggerFont = const TextStyle(fontSize: 18.0); //Aumenta el tamaño de la fuente.
+  final _suggestions = <WordPair>[]; //Almacena las palabra sugeridas.
+  final Set<WordPair> _saved =
+      Set<WordPair>(); //Almacena las palabras seleccionadas.
+  final _biggerFont =
+      const TextStyle(fontSize: 18.0); //Aumenta el tamaño de la fuente.
   // TODO Add build() method
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Generador de palabras'), 
+        title: Text('Generador de palabras'),
       ),
-      body: _buildSuggestions(), //lamar directamente a la biblioteca de generación de palabras
+      body:
+          _buildSuggestions(), //lamar directamente a la biblioteca de generación de palabras
     );
   }
 
@@ -55,11 +56,28 @@ class RandomWordsState extends State<RandomWords> {
 
   /*Esta función muestra cada pareja en un ListTile*/
   Widget _buildRow(WordPair pair) {
+    final bool alreadySaved =
+        _saved.contains(pair); //Validación para las palabras almacenadas
     return ListTile(
       title: Text(
         pair.asPascalCase,
         style: _biggerFont,
       ),
+      trailing: Icon(
+        //Agrega el icono al ListView
+        alreadySaved ? Icons.add_circle : Icons.add_circle_outline,
+        color: alreadySaved ? Colors.green : null,
+      ),
+      onTap: () {
+        //Agrega la acción al tocar cada celda del ListView
+        setState(() {
+          if (alreadySaved) {
+            _saved.remove(pair);
+          } else {
+            _saved.add(pair);
+          }
+        });
+      },
     );
   }
 }

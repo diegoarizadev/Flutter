@@ -1,8 +1,9 @@
 # Flutter
 
-### Características 
+### Características
 
-- Proyectos de ejemplo de Dart y Flutter para el desarrollo de aplicaciónes móviles en Android y IOS.
+- Proyectos de ejemplo de Dart y Flutter para el desarrollo de aplicaciones móviles en Android y IOS.
+
 
 **Tabla de contenido**
 
@@ -13,5 +14,6 @@
 
 ![](https://n0rf3n.github.io/Flutter/Resources/StatefulWidget.gif)
 
-### 02 xx
+### 02 Hola Mundo
 
+![](https://n0rf3n.github.io/Flutter/Resources/HolaMundo.gif)

@@ -29,42 +29,97 @@ class _CountPageState extends State<CountPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //Scaffold es la estructura de toda la pantalla.
-      appBar: AppBar(
-        title: (Text('Contador de Clicks - StatefulWidget')),
-        centerTitle:
-            true, //Para Android no se debe marcar esta propiedad, de lo contrario no queda centrado.
-        elevation: 100.0, //Sombra debajo del AppBar.
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment
-              .center, //con esta propiedad centra el Widget en toda la pantalla.
-          children: <Widget>[
-            //Se pasa una lista de widgets.
-            Text(
-              'Número de Clicks ',
-              style: _styleTittle,
-            ),
-            Text(
-              '$_countClicks', //countClicks.toString(),//como es un Int, se convierte a String pero se puede interpolar con el signo $
-              style: _styleSubTittle,
-            ),
-          ],
+        //Scaffold es la estructura de toda la pantalla.
+        appBar: AppBar(
+          title: (Text('Contador de Clicks - StatefulWidget')),
+          centerTitle:
+              true, //Para Android no se debe marcar esta propiedad, de lo contrario no queda centrado.
+          elevation: 100.0, //Sombra debajo del AppBar.
         ),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation
-          .endFloat, //Centra el botón en la pantalla.
-      floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.plus_one), //Text('Toca'), // Se agrega un widget
-          onPressed: () {
-            print('Hola Mundo');
-            setState(() {//funcion anonima, Se necesita para que redibuje los cambios en la pantalla.
-              _countClicks +=1; //***El contador no aumenta en la interface del dispositivo ya que el widget es de tipo StatelessWidget.!
-            });
-            print('$_countClicks');
-          } //Se declara una función anonima para la acción del botón.
-          ), //Se agrega botón en la parte deregha inferior de la pantalla.
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment
+                .center, //con esta propiedad centra el Widget en toda la pantalla.
+            children: <Widget>[
+              //Se pasa una lista de widgets.
+              Text(
+                'Número de Clicks ',
+                style: _styleTittle,
+              ),
+              Text(
+                '$_countClicks', //countClicks.toString(),//como es un Int, se convierte a String pero se puede interpolar con el signo $
+                style: _styleSubTittle,
+              ),
+            ],
+          ),
+        ),
+        floatingActionButton:
+            _createButtons() //Se agrega los botones en la parte derecha inferior de la pantalla.
+        );
+  }
+
+  Widget _createButtons() {
+    return Row(
+      //Objecto Filas
+      mainAxisAlignment:
+          MainAxisAlignment.end, //End será la parte final de la fila
+      children: <Widget>[
+        SizedBox(
+          //Agrega separaciones entre los elementos o FloatingActionButton
+          width: 30,
+        ),
+        FloatingActionButton(
+          onPressed:
+              reset, //no se colocan los parentesis ya que se necesita ejecutar la acción a demanada, por ende solo se envia la referencia.
+          child: Icon(Icons.exposure_zero),
+        ),
+        Expanded(
+          //Agrega un efecto de separación entre el primer botón y los otros.
+          child: SizedBox(
+              //el metodo puede quedar null, ya que solo separar los elementos
+              //Agrega separaciones entre los elementos o FloatingActionButton
+              ),
+        ),
+        FloatingActionButton(
+          onPressed:
+              subtract, //no se colocan los parentesis ya que se necesita ejecutar la acción a demanada, por ende solo se envia la referencia.
+          child: Icon(Icons.remove),
+        ),
+        SizedBox(
+          //Agrega separaciones entre los elementos o FloatingActionButton
+          width: 8.0,
+        ),
+        FloatingActionButton(
+          onPressed:
+              sum, //no se colocan los parentesis ya que se necesita ejecutar la acción a demanada, por ende solo se envia la referencia.
+          child: Icon(Icons.plus_one),
+        )
+      ],
     );
+  }
+
+  void sum() {
+    setState(() {
+      //Función de los StatefulWidget
+      _countClicks++;
+    });
+  }
+
+  void reset() {
+    setState(() {
+      //Función de los StatefulWidget
+      if (_countClicks > 0) {
+        _countClicks = 0;
+      }
+    });
+  }
+
+  void subtract() {
+    setState(() {
+      //Función de los StatefulWidget
+      if (_countClicks > 0) {
+        _countClicks--;
+      }
+    });
   }
 }

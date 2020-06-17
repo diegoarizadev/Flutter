@@ -9,12 +9,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Material App',
       debugShowCheckedModeBanner: false, //Quita el banner "Debug"
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Material App Bar'),
-        ),
-        body: HomePageTmp(),
-      ),
+      home: HomePageTmp(), //Este objeto ya retorna un Scaffold
     );
   }
 } 

@@ -49,8 +49,22 @@ class HomePageTmp extends StatelessWidget {
     return elementsList.map(
         //retorna una lista iterable, donde cada elemento pasa por la función anonima.
         (item) {
-      return ListTile(
-        title: Text(item),
+      return Column(
+        children: <Widget>[
+          ListTile(
+            title: Text(item),
+            subtitle: Text('Información de tipo Subtitulo'),
+            leading: //agrega un icono al inicio de la celda.
+                Icon(Icons.add_to_queue),
+            trailing: //agrega un icono al final de la celda.
+                Icon(Icons.arrow_forward_ios),
+            onTap: () {}, //Función para el click de la celda
+          ),
+          Divider(
+            height: 20.0, //Define el alto del divisor.
+            color: Colors.red, //Define el color del divisor.
+          )
+        ],
       );
     }).toList(); //Se utiliza el toList para retornar una lista de ListTile
   }

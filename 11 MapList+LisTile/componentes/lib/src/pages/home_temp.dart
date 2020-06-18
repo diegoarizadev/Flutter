@@ -11,7 +11,8 @@ class HomePageTmp extends StatelessWidget {
       ),
       body: ListView(
           //implementación de un listView
-          children: _createlist()), //Items o celdas de la list a mostrar.
+          //children: _createlist()), //Items o celdas de la list a mostrar.
+          children: _createshortlist()),
     );
   }
 
@@ -25,7 +26,7 @@ class HomePageTmp extends StatelessWidget {
       //El tipo de objeto es String.!
 
       final listFinal = ListTile(
-        //Se define el objecto o Celdas de la lista para almacenar la información.
+        //Se define el objeto o Celdas de la lista para almacenar la información.
         title: Text(item),
       );
 
@@ -42,5 +43,15 @@ class HomePageTmp extends StatelessWidget {
     }
 
     return list;
+  }
+
+  List<Widget> _createshortlist() {
+    return elementsList.map(
+        //retorna una lista iterable, donde cada elemento pasa por la función anonima.
+        (item) {
+      return ListTile(
+        title: Text(item),
+      );
+    }).toList(); //Se utiliza el toList para retornar una lista de ListTile
   }
 }

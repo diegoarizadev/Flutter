@@ -1,3 +1,4 @@
+import 'package:componentes/src/providers/menu_providers.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -16,6 +17,8 @@ class HomePage extends StatelessWidget {
 
   Widget _listCustom() //Body del Scaffold
   {
+     print(menuProvider.opcionesMenu); //Al ejecutar el constructor de este objeto se imprime en la consola la información del JSON
+
     return ListView(
       children: _itemsList(),
     );
@@ -23,7 +26,6 @@ class HomePage extends StatelessWidget {
 
   List<Widget> _itemsList() //Retorna los items o celdas de la lista.
   {
-
     double heightCell = 15.0;
     return [
       ListTile(

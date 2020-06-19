@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'package:flutter/services.dart'
     show
         rootBundle; //Con esta opción se exponen un objecto especifico del paquete para ser usado en la clase.
@@ -10,11 +11,16 @@ class _MenuProvider {
     loadData(); //Future Build
   }
 
-  void loadData() {
-    //Retorna un Future.
+  Future <List<dynamic>> loadData() async { //Retorna un Future
     //Lectura del archivo JSON
-    rootBundle.loadString('data/menu_data.json').then((info) => print(
-        info)); //Como es un Future, se obtniene la data del archivo Json y se envia a la consola temporalmente.
+    final response = await rootBundle.loadString('data/menu_data.json');
+
+      Map dataMap = json.decode(response);
+      print(dataMap['nombreApp']);
+      print(dataMap['rutas']);
+      opcionesMenu = dataMap['rutas']; //convierte el JSON en un List
+     
+     return opcionesMenu;
   }
 }
 

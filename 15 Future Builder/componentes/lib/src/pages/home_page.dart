@@ -17,8 +17,12 @@ class HomePage extends StatelessWidget {
 
   Widget _listCustom() //Body del Scaffold
   {
-     print(menuProvider.opcionesMenu); //Al ejecutar el constructor de este objeto se imprime en la consola la información del JSON
+    //print(menuProvider.opcionesMenu); //Al ejecutar el constructor de este objeto se imprime en la consola la información del JSON
 
+    menuProvider.loadData().then((opciones) {
+      print('_listCustom()');
+      print('$opciones');
+    }); //loaddata retorna un future, entonces con el .then se queda a la escucha hasta que responda.
     return ListView(
       children: _itemsList(),
     );

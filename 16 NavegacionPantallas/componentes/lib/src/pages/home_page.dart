@@ -1,4 +1,5 @@
 import 'package:componentes/src/providers/menu_providers.dart';
+import 'package:componentes/src/utils/icons_string.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -59,10 +60,7 @@ class HomePage extends StatelessWidget {
     snapshotData.forEach((item) {
       final cell = ListTile(
         title: Text(item['texto']),
-        leading: Icon(
-          Icons.accessibility,
-          color: Colors.green,
-        ),
+        leading: getIconString(item['icon']),
         trailing: Icon(Icons.arrow_back, color: Colors.green),
         onTap: () {},
       );

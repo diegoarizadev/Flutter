@@ -1,3 +1,4 @@
+import 'package:componentes/src/pages/alert_page.dart';
 import 'package:componentes/src/providers/menu_providers.dart';
 import 'package:componentes/src/utils/icons_string.dart';
 import 'package:flutter/material.dart';
@@ -44,14 +45,14 @@ class HomePage extends StatelessWidget {
 
         print(snapshot.data); //snapshot.data contiene la data del JSON
         return ListView(
-          children: _itemsList(snapshot.data),
+          children: _itemsList(snapshot.data, context),
         );
       },
     );
   }
 
-  List<Widget> _itemsList(
-      List<dynamic> snapshotData) //Retorna los items o celdas de la lista.
+  List<Widget> _itemsList(List<dynamic> snapshotData,
+      BuildContext context) //Retorna los items o celdas de la lista.
   {
     double heightCell = 15.0;
 
@@ -62,7 +63,16 @@ class HomePage extends StatelessWidget {
         title: Text(item['texto']),
         leading: getIconString(item['icon']),
         trailing: Icon(Icons.arrow_back, color: Colors.green),
-        onTap: () {},
+        onTap: () {
+          final router = MaterialPageRoute(builder: (context) {
+            //contexto de la aplicación
+            return AlertPage();
+          });
+          Navigator.push(
+              context, //Cual es la pagina que se está mostrando y sabe cual es la siguiente y anterior pagina.
+              router //Ruta
+              );
+        },
       );
 
       opciones

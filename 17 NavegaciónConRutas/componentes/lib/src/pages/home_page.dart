@@ -64,14 +64,9 @@ class HomePage extends StatelessWidget {
         leading: getIconString(item['icon']),
         trailing: Icon(Icons.arrow_back, color: Colors.green),
         onTap: () {
-          final router = MaterialPageRoute(builder: (context) {
-            //contexto de la aplicación
-            return AlertPage();
-          });
-          Navigator.push(
-              context, //Cual es la pagina que se está mostrando y sabe cual es la siguiente y anterior pagina.
-              router //Ruta
-              );
+
+          Navigator.pushNamed(context, item['ruta']); //Se llama al pushNamed el cual esta definido en el Main de la aplicación.
+
         },
       );
 

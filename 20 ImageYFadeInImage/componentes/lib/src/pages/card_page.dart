@@ -51,12 +51,19 @@ class CardPage extends StatelessWidget {
     return Card(
       child: Column(
         children: <Widget>[
-          Image(
-              image: NetworkImage(
-                  'https://i.pinimg.com/originals/27/e4/16/27e4160b0e3d0b90cbcf6aee8e133951.jpg')),
-          Container(//agrega separación con la imagen y el texto
-            padding: EdgeInsets.all(10.0),
-            child: Text('Hi'))
+          FadeInImage(
+            placeholder: AssetImage(
+                'assets/placeholder.gif'), //Esta imagen debe estar fisicamente en el dispositivo ya que es el recurso que mostrara el 'Cargando'
+            image: NetworkImage(
+                'https://i.pinimg.com/originals/27/e4/16/27e4160b0e3d0b90cbcf6aee8e133951.jpg'),//Imagen a cargar
+            fadeInDuration: Duration(milliseconds: 200), //Parecido a una animación.
+            height: 300.0, //Alto de la imagen
+            fit: BoxFit.cover, //Espacio a ocupar de la imagen
+          ), 
+          Container(
+              //agrega separación con la imagen y el texto
+              padding: EdgeInsets.all(10.0),
+              child: Text('Hi'))
         ],
       ),
     );

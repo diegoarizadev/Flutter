@@ -54,7 +54,7 @@ class _ContadorState extends State<Contador> {
           Icons.exposure_zero,
           color: Colors.black,
         ),
-        onPressed: () {},
+        onPressed: _resetCount,
       ),
       SizedBox(
         width: 5,
@@ -64,11 +64,11 @@ class _ContadorState extends State<Contador> {
           Icons.remove,
           color: Colors.black,
         ),
-        onPressed: () {},
+        onPressed: _deleteCount,
       ),
       Expanded(child: SizedBox()),
       FloatingActionButton.extended(
-        onPressed: () {},
+        onPressed: _addCount,
         label: Text('Agregar', style: styleFloatingButton),
         icon: const Icon(
           Icons.add,
@@ -77,5 +77,27 @@ class _ContadorState extends State<Contador> {
         backgroundColor: Colors.blue,
       ),
     ]);
+  }
+
+  void _addCount() {
+    setState(() {
+      _count++;
+    });
+  }
+
+  void _resetCount() {
+    setState(() {
+      if (_count > 0) {
+        _count = 0;
+      }
+    });
+  }
+
+  void _deleteCount() {
+    setState(() {
+      if (_count > 0) {
+        _count--;
+      }
+    });
   }
 }

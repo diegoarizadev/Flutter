@@ -1,30 +1,36 @@
 import 'package:flutter/material.dart';
 
-class Home extends StatelessWidget {
 // Creacion de un estilo.
-  final TextStyle styleCustomTittle = new TextStyle(
-      fontWeight: FontWeight.bold, fontStyle: FontStyle.italic, fontSize: 20);
+final TextStyle styleCustomTittle = new TextStyle(
+    fontWeight: FontWeight.bold, fontStyle: FontStyle.italic, fontSize: 20);
 
-  final TextStyle styleCustomtext = new TextStyle(
-      fontWeight: FontWeight.normal, fontStyle: FontStyle.normal, fontSize: 25);
+final TextStyle styleCustomtext = new TextStyle(
+    fontWeight: FontWeight.normal, fontStyle: FontStyle.normal, fontSize: 25);
 
-  int count = 10;
+int _count = 0;
 
+class Contador extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => _ContadorState();
+}
+
+// Controla el estado de la clase.
+class _ContadorState extends State<Contador> {
   @override
   Widget build(BuildContext context) {
     // este es un widget que tiene inmerso un Appbar (inferior), un Bar, un Action Button y ventanas laterales.
     return Scaffold(
       appBar: AppBar(
-        title: Text('Titulo del App bar'),
+        title: Text('StatefulWidget'),
         centerTitle: true,
         elevation: 50.0,
       ),
       body: Center(
         child: Column(
           children: [
-            Text('Números de clicks:', style: styleCustomTittle),
+            Text('Números de clicks o taps:', style: styleCustomTittle),
             Text(
-              '$count',
+              '$_count',
               style: styleCustomtext,
             ),
           ],
@@ -34,8 +40,11 @@ class Home extends StatelessWidget {
       floatingActionButton: FloatingActionButton.extended(
         label: const Text('Agregar'),
         onPressed: () {
-          count++;
-          print('Se ha presionado el botón $count');
+          setState(() {
+            //Este metodo, redibuja todo el Widget.
+            _count++;
+            print('Se ha presionado el botón $_count');
+          });
         },
         icon: const Icon(
           Icons.add,

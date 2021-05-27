@@ -1,5 +1,4 @@
 void main() {
-
   //Tipos de datos númericos.
   int meseros = 10;
   double pi = 3.1415;
@@ -13,12 +12,10 @@ void main() {
   print('$nombre');
 
   print(nombre[0]);
-  print(nombre[nombre.length -1]);
+  print(nombre[nombre.length - 1]); //Impresion de la ultima letra
 
   String nombre1 = "Flutter";
   print('$nombre1');
   String nombre2 = "Flu\"tter";
   print('$nombre2');
-
-
 }

@@ -29,16 +29,18 @@ class Home extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
         ),
       ),
-      floatingActionButton: FloatingActionButton(
+      floatingActionButton: FloatingActionButton.extended(
+        label: const Text('Agregar'),
         onPressed: () {
-          print('Se presionado el botón');
+          print('Se ha presionado el botón');
         },
-        child: const Icon(
+        icon: const Icon(
           Icons.add,
           color: Colors.black,
         ),
         backgroundColor: Colors.blue,
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }

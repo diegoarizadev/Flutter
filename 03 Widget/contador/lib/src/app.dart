@@ -1,3 +1,4 @@
+import 'package:contador/src/pages/home.dart';
 import 'package:flutter/material.dart';
 
 //creacion de un widget
@@ -9,7 +10,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       //debe retornar un widget, MaterialApp widget para la configuracion global de la App
       home: Center(
-        child: Text('Hola Mundo!'),
+        child: Home(),
       ),
     );
   }

@@ -7,6 +7,9 @@ final TextStyle styleCustomTittle = new TextStyle(
 final TextStyle styleCustomtext = new TextStyle(
     fontWeight: FontWeight.normal, fontStyle: FontStyle.normal, fontSize: 25);
 
+final TextStyle styleFloatingButton =
+    new TextStyle(fontWeight: FontWeight.bold, color: Colors.black);
+
 int _count = 0;
 
 class Contador extends StatefulWidget {
@@ -37,22 +40,42 @@ class _ContadorState extends State<Contador> {
           mainAxisAlignment: MainAxisAlignment.center,
         ),
       ),
-      floatingActionButton: FloatingActionButton.extended(
-        label: const Text('Agregar'),
-        onPressed: () {
-          setState(() {
-            //Este metodo, redibuja todo el Widget.
-            _count++;
-            print('Se ha presionado el botón $_count');
-          });
-        },
+      floatingActionButton: _createFloatingButton(),
+    );
+  }
+
+  Widget _createFloatingButton() {
+    return Row(mainAxisAlignment: MainAxisAlignment.end, children: [
+      SizedBox(
+        width: 30,
+      ),
+      FloatingActionButton(
+        child: Icon(
+          Icons.exposure_zero,
+          color: Colors.black,
+        ),
+        onPressed: () {},
+      ),
+      SizedBox(
+        width: 5,
+      ),
+      FloatingActionButton(
+        child: Icon(
+          Icons.remove,
+          color: Colors.black,
+        ),
+        onPressed: () {},
+      ),
+      Expanded(child: SizedBox()),
+      FloatingActionButton.extended(
+        onPressed: () {},
+        label: Text('Agregar', style: styleFloatingButton),
         icon: const Icon(
           Icons.add,
           color: Colors.black,
         ),
         backgroundColor: Colors.blue,
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-    );
+    ]);
   }
 }

@@ -9,13 +9,16 @@ class _MenuProvider {
     loadData();
   }
 
-  loadData() {
-    rootBundle.loadString('data/menu.json').then((data) {
-      Map dataMap = json.decode(data);
-      print(dataMap['nombreApp']);
-      print(dataMap['rutas']);
-      options = dataMap['rutas'];
-    });
+  Future<List<dynamic>> loadData() async {
+    //Cuando se halla consumido el archivo, se contruira la parte grafica.
+    final response = await rootBundle.loadString('data/menu.json');
+
+    Map dataMap = json.decode(response);
+    print(dataMap['nombreApp']);
+    print(dataMap['rutas']);
+    options = dataMap['rutas'];
+
+    return options;
   }
 }
 

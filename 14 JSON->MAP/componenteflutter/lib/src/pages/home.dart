@@ -23,7 +23,7 @@ class HomePageTmp extends StatelessWidget {
   }
 
   Widget _listCustom() {
-    print(menuProvider.options);
+    print('_listCustom : ' + menuProvider.options.toString());
 
     return ListView(
       children: _itemsLista(),

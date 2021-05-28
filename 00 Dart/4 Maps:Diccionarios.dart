@@ -23,7 +23,7 @@ print(persona1['Edad']);
 print(persona1[Propiedad]);
 
 
-persona1.addAll({'Estudios': 'Universitarios'}); //Agregar un objeto a la lista
+persona1.addAll({'Estudios': 'Universitarios'}); //Agregar un objeto al mapa
 
 print(persona1['Estudios']);
 }

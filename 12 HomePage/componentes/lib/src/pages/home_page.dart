@@ -1,52 +1,42 @@
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key key}) : super(key: key);
+  final strutStyleBar = new StrutStyle(
+    //Instancia Objectos globales para ser reutilizados.
+    fontSize: 20,
+    fontStyle: FontStyle.italic,
+  );
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Titulo App Bar'),
+        title: Text(
+          'HomePage',
+          strutStyle: strutStyleBar,
+        ),
+        backgroundColor: Colors.green,
       ),
-      body:
-          _listCustom(), //Metodo para crear el widget a retornar, en este caso un ListView
+      body: _listCustom(),
     );
   }
 
-  Widget _listCustom() //Body del Scaffold
-  {
+  Widget _listCustom() {
     return ListView(
-      children: _itemsList(),
+      children: _itemsLista(),
     );
   }
 
-  List<Widget> _itemsList() //Retorna los items o celdas de la lista.
-  {
-
-    double heightCell = 15.0;
+  List<Widget> _itemsLista() {
     return [
-      ListTile(
-        title: Text('Item A'),
-      ),
-      Divider(
-        height: heightCell, //Define el alto del divisor.
-        color: Colors.blue, //Define el color del divisor.
-      ),
-      ListTile(
-        title: Text('Item A'),
-      ),
-      Divider(
-        height: heightCell, //Define el alto del divisor.
-        color: Colors.blue, //Define el color del divisor.
-      ),
-      ListTile(
-        title: Text('Item A'),
-      ),
-      Divider(
-        height: heightCell, //Define el alto del divisor.
-        color: Colors.blue, //Define el color del divisor.
-      )
+      ListTile(title: Text('A')),
+      Divider(),
+      ListTile(title: Text('A')),
+      Divider(),
+      ListTile(title: Text('A')),
+      Divider(),
+      ListTile(title: Text('A')),
+      Divider(),
     ];
   }
 }

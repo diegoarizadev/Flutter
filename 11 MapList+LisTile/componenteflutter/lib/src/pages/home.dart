@@ -20,37 +20,34 @@ class HomePageTmp extends StatelessWidget {
       appBar: AppBar(
         title: Text('AppBar'),
       ),
-      body: _crearListView(),
-    );
-  }
-
-  ListView _crearListView() {
-    List<Widget> data = new List<Widget>.empty(growable: true);
-
-    for (var item in options) {
-      data.add(ListTile(
-        leading: FlutterLogo(),
-        title: Text(item),
-        tileColor: Colors.blue[50],
-        subtitle: Text('Este es un Subtitulo'),
-        selectedTileColor: Colors.red,
-        trailing: Icon(Icons.more_vert),
-        onTap: onTapList,
-      ));
-
-      data.add(Divider(
-        color: Colors.grey,
-      ));
-    }
-
-    return new ListView(
-      padding: const EdgeInsets.all(8),
-      children: data,
+      body: ListView(padding: const EdgeInsets.all(8), children: _corta()),
     );
   }
 
   void onTapList() {
     count++;
     print('Funcion OnTap $count');
+  }
+
+  List<Widget> _corta() {
+    return options.map((item) {
+      //La opcion map, convierte el array en un objecto iterable.
+      return Column(
+        children: [
+          ListTile(
+            leading: FlutterLogo(),
+            title: Text(item),
+            tileColor: Colors.blue[50],
+            subtitle: Text('Este es un Subtitulo+'),
+            selectedTileColor: Colors.red,
+            trailing: Icon(Icons.more_vert),
+            onTap: onTapList,
+          ),
+          Divider(
+            color: Colors.grey,
+          )
+        ],
+      );
+    }).toList();
   }
 }

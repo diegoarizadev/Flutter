@@ -1,4 +1,5 @@
 import 'package:componenteflutter/src/providers/menu.dart';
+import 'package:componenteflutter/src/utils/icon.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -52,7 +53,7 @@ class HomePageTmp extends StatelessWidget {
       final widgetTmp = ListTile(
         title: Text(element['texto']),
         onTap: onTapList,
-        leading: FlutterLogo(),
+        leading: getIcon(element['icon']),
         trailing: Icon(Icons.more_vert),
         subtitle: Text('Este es un Subtitulo'),
         tileColor: Colors.green[50],

@@ -19,7 +19,13 @@ class CardsPage extends StatelessWidget {
       ),
       body: ListView(
         padding: EdgeInsets.all(20.0),
-        children: <Widget>[_cardsOne()],
+        children: <Widget>[
+          _cardsOne(),
+          SizedBox(
+            height: 30.0,
+          ),
+          _cardsTwo(),
+        ],
       ),
     );
   }
@@ -47,6 +53,25 @@ class CardsPage extends StatelessWidget {
               )
             ],
           )
+        ],
+      ),
+    );
+  }
+
+  Widget _cardsTwo() {
+    return Card(
+      //Implementacion de un placeholders
+      child: Column(
+        children: [
+          FadeInImage(
+            placeholder: AssetImage('assets/placeholder.gif'),
+            image: NetworkImage(
+                'https://elpelicultista.com/images/el-padrino.jpg'),
+            fadeInDuration: Duration(milliseconds: 200),
+            fit: BoxFit.cover,
+            height: 300.0,
+          ),
+          Container(padding: EdgeInsets.all(2.0), child: Text('El Padrino')),
         ],
       ),
     );

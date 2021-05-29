@@ -1,3 +1,4 @@
+import 'package:componenteflutter/src/pages/alert.dart';
 import 'package:componenteflutter/src/providers/menu.dart';
 import 'package:componenteflutter/src/utils/icon.dart';
 import 'package:flutter/cupertino.dart';
@@ -40,19 +41,22 @@ class HomePageTmp extends StatelessWidget {
         print('FutureBuilder : $snapshot');
         print(snapshot.data);
         return ListView(
-          children: _itemsLista(snapshot.data),
+          children: _itemsLista(snapshot.data, context),
         );
       },
     );
   }
 
-  List<Widget> _itemsLista(List<dynamic>? data) {
+  List<Widget> _itemsLista(List<dynamic>? data, BuildContext context) {
     List<Widget> optionMenu = new List<Widget>.empty(growable: true);
 
     data!.forEach((element) {
       final widgetTmp = ListTile(
         title: Text(element['texto']),
-        onTap: onTapList,
+        onTap: () {
+          final route = MaterialPageRoute(builder: (context) => AlertPage());
+          Navigator.push(context, route);
+        },
         leading: getIcon(element['icon']),
         trailing: Icon(Icons.more_vert),
         subtitle: Text('Este es un Subtitulo'),
@@ -63,10 +67,5 @@ class HomePageTmp extends StatelessWidget {
     });
 
     return optionMenu;
-  }
-
-  void onTapList() {
-    count++;
-    print('Funcion OnTap $count');
   }
 }

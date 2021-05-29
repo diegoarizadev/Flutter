@@ -25,6 +25,22 @@ class CardsPage extends StatelessWidget {
             height: 30.0,
           ),
           _cardsTwo(),
+          SizedBox(
+            height: 30.0,
+          ),
+          _cardsOne(),
+          SizedBox(
+            height: 30.0,
+          ),
+          _cardsTwo(),
+          SizedBox(
+            height: 30.0,
+          ),
+          _cardsOne(),
+          SizedBox(
+            height: 30.0,
+          ),
+          _cardsTwo(),
         ],
       ),
     );

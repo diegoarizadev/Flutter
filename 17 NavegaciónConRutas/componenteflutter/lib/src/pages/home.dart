@@ -54,8 +54,7 @@ class HomePageTmp extends StatelessWidget {
       final widgetTmp = ListTile(
         title: Text(element['texto']),
         onTap: () {
-          final route = MaterialPageRoute(builder: (context) => AlertPage());
-          Navigator.push(context, route);
+          Navigator.pushNamed(context, element['ruta']);
         },
         leading: getIcon(element['icon']),
         trailing: Icon(Icons.more_vert),

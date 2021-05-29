@@ -12,7 +12,7 @@ class AvartarPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Avatar',
+          'Avatars',
           strutStyle: strutStyleBar,
         ),
         backgroundColor: Colors.green,

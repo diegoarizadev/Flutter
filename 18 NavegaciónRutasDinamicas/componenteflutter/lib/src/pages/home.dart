@@ -1,4 +1,3 @@
-import 'package:componenteflutter/src/pages/alert.dart';
 import 'package:componenteflutter/src/providers/menu.dart';
 import 'package:componenteflutter/src/utils/icon.dart';
 import 'package:flutter/cupertino.dart';
@@ -10,8 +9,6 @@ class HomePageTmp extends StatelessWidget {
     fontSize: 20,
     fontStyle: FontStyle.italic,
   );
-
-  int count = 0;
 
   @override
   Widget build(BuildContext context) {

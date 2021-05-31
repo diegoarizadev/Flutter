@@ -7,6 +7,7 @@ class SliderCustom extends StatefulWidget {
 
 class _SliderCustomState extends State<SliderCustom> {
   double _valueSlider = 100.0;
+  bool _blockCheck = false;
   final strutStyleBar = new StrutStyle(
     //Instancia Objectos globales para ser reutilizados.
     fontSize: 20,
@@ -25,7 +26,11 @@ class _SliderCustomState extends State<SliderCustom> {
       body: Container(
         padding: EdgeInsets.only(top: 20.0), //Separación en la parte superior.
         child: Column(
-          children: [_newSlider(), Expanded(child: _createImage())],
+          children: [
+            _newSlider(),
+            _createCheckBox(),
+            Expanded(child: _createImage())
+          ],
         ),
       ),
     );
@@ -39,13 +44,15 @@ class _SliderCustomState extends State<SliderCustom> {
         value: _valueSlider,
         min: 10.0,
         max: 200.0,
-        onChanged: (valueSlide) {
-          print('Valor: $valueSlide');
+        onChanged: (_blockCheck)
+            ? null
+            : (valueSlide) {
+                print('Valor: $valueSlide');
 
-          setState(() {
-            _valueSlider = valueSlide;
-          });
-        });
+                setState(() {
+                  _valueSlider = valueSlide;
+                });
+              });
   }
 
   _createImage() {
@@ -54,6 +61,17 @@ class _SliderCustomState extends State<SliderCustom> {
           'http://www.criaderoloschillos.com/wp-content/uploads/2017/05/BostonTerrier.png'),
       width: _valueSlider,
       fit: BoxFit.contain,
+    );
+  }
+
+  _createCheckBox() {
+    return Checkbox(
+      value: _blockCheck,
+      onChanged: (data) {
+        setState(() {
+          _blockCheck = data!;
+        });
+      },
     );
   }
 }

@@ -65,7 +65,16 @@ class _SliderCustomState extends State<SliderCustom> {
   }
 
   _createCheckBox() {
-    return Checkbox(
+    // return Checkbox(
+    //   value: _blockCheck,
+    //   onChanged: (data) {
+    //     setState(() {
+    //       _blockCheck = data!;
+    //     });
+    //   },
+    // );
+    return CheckboxListTile(
+      title: Text('Bloquear Slider'),
       value: _blockCheck,
       onChanged: (data) {
         setState(() {

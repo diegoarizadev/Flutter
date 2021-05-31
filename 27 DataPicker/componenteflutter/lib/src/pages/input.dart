@@ -14,6 +14,10 @@ class _InputCustomState extends State<InputCustom> {
 
   String _nombre = '';
   String _email = '';
+  String _fecha = '';
+
+  TextEditingController _inputDateDontroller =
+      new TextEditingController(); //Proppiedad para controlar el TextField desde cualquier otra funcion o lugar del codigo
 
   @override
   Widget build(BuildContext context) {
@@ -41,6 +45,8 @@ class _InputCustomState extends State<InputCustom> {
           _createEmail(),
           Divider(),
           _createPassword(),
+          Divider(),
+          _createDate(context),
           Divider(),
           _createPerson(),
           Divider(),
@@ -144,5 +150,51 @@ class _InputCustomState extends State<InputCustom> {
         setState(() => _email = inputData);
       },
     );
+  }
+
+  Widget _createDate(BuildContext context) {
+    return TextField(
+      enableInteractiveSelection: false,
+      controller: _inputDateDontroller, //Se asigna el controlador al campo.
+      decoration: InputDecoration(
+        border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(
+                10.0)), //Borde de toda la caja donde va el InputText
+        hintText:
+            'Selecciona tu fecha de nacimiento', //Placeholder o texto de sugerencia
+        labelText: 'Fecha de nacimiento',
+        helperText: 'Fecha de nacimiento', //Label del campo
+        suffixIcon: Icon(
+          Icons.date_range,
+          color: Colors.green,
+        ), //Icono al final del TextField
+        icon: Icon(
+          Icons.date_range_rounded,
+          color: Colors.green,
+        ), //Icono al inicio del Textfield
+      ),
+      onTap: () {
+        FocusScope.of(context).requestFocus(
+            new FocusNode()); //Se quita el Foco o seleccion del campo
+        _selectDate(context);
+      },
+    );
+  }
+
+  _selectDate(BuildContext context) async {
+    //Se va aretornar ubn Future
+    DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: new DateTime.now(),
+      firstDate: new DateTime(2018),
+      lastDate: new DateTime(2025),
+    );
+
+    if (picked != null) {
+      setState(() {
+        _fecha = picked.toString();
+        _inputDateDontroller.text = _fecha; //Se asigna la fecha al textfield.
+      });
+    }
   }
 }

@@ -15,9 +15,31 @@ class _InputCustomState extends State<InputCustom> {
   String _nombre = '';
   String _email = '';
   String _fecha = '';
+  List<String> _powers = [
+    'Volar',
+    'Fuerza',
+    'Visión X',
+    'Velocidad',
+    'Inteligencia'
+  ];
+  String _powerSelect = 'Volar';
 
   TextEditingController _inputDateDontroller =
-      new TextEditingController(); //Proppiedad para controlar el TextField desde cualquier otra funcion o lugar del codigo
+      new TextEditingController(); //Proppiedad para controlar el TextField desde cualquier otra funcion o lugar del codigo.
+
+  //Lista de objecto para el combobox o menu
+  List<DropdownMenuItem<String>> getValuesDropDown() {
+    List<DropdownMenuItem<String>> lista =
+        new List<DropdownMenuItem<String>>.empty(growable: true);
+    _powers.forEach((power) {
+      lista.add(DropdownMenuItem(
+        child: Text(power),
+        value: power,
+      ));
+    });
+
+    return lista;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -47,6 +69,8 @@ class _InputCustomState extends State<InputCustom> {
           _createPassword(),
           Divider(),
           _createDate(context),
+          Divider(),
+          _createDropdown(), //ComboBox
           Divider(),
           _createPerson(),
           Divider(),
@@ -95,6 +119,7 @@ class _InputCustomState extends State<InputCustom> {
     return ListTile(
       title: Text('Nombre es : $_nombre'),
       subtitle: Text('Email es : $_email'),
+      trailing: Text(_powerSelect),
     );
   }
 
@@ -198,5 +223,33 @@ class _InputCustomState extends State<InputCustom> {
         _inputDateDontroller.text = _fecha; //Se asigna la fecha al textfield.
       });
     }
+  }
+
+  _createDropdown() {
+    return Row(
+      children: [
+        Icon(
+          Icons.select_all,
+          color: Colors.green,
+        ),
+        SizedBox(
+          width: 30.0,
+        ),
+        Expanded(
+          //Utiliza todo el ancho de la pantalla
+          child: DropdownButton(
+            value: _powerSelect, //Muestra la primera opcíon seleccionada
+            items: getValuesDropDown(),
+            onChanged: (dataSelect) {
+              print('Este es el OPT : $dataSelect');
+              setState(() {
+                _powerSelect =
+                    dataSelect.toString(); //Actualiza el valor seleccionado
+              });
+            },
+          ),
+        )
+      ],
+    );
   }
 }

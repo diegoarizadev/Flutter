@@ -5,6 +5,7 @@ final _icon = <String, IconData>{
   'add_alert': Icons.add_alert,
   'accessibility': Icons.accessibility,
   'folder_open': Icons.folder_open,
+  'build_circle': Icons.build_circle
 };
 
 Icon getIcon(String nameIcon) => Icon(

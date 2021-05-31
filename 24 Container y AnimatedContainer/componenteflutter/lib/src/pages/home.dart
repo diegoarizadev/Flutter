@@ -55,7 +55,7 @@ class HomePageTmp extends StatelessWidget {
         },
         leading: getIcon(element['icon']),
         trailing: Icon(Icons.more_vert),
-        subtitle: Text('Este es un Subtitulo'),
+        subtitle: Text(element['subtexto']),
         tileColor: Colors.green[50],
       );
 

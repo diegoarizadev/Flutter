@@ -24,6 +24,12 @@
             "icon" : "build_circle",
             "texto": "Contenedor Animado",
             "subtexto": "Ejemplo de contenedor animado."
+        },
+        {
+            "ruta" : "inputs",
+            "icon" : "receipt",
+            "texto": "Inputs",
+            "subtexto": "Implementación de elementos Input"
         }
     ]
 }

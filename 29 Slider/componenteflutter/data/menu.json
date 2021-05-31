@@ -29,7 +29,13 @@
             "ruta" : "inputs",
             "icon" : "receipt",
             "texto": "Inputs",
-            "subtexto": "Implementación de elementos Input"
+            "subtexto": "Implementación de elementos Input."
+        },
+        {
+            "ruta" : "slider",
+            "icon" : "reorder",
+            "texto": "Slider",
+            "subtexto": "Implementación de un slider."
         }
     ]
 }

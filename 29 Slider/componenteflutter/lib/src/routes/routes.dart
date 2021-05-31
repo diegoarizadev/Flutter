@@ -4,6 +4,7 @@ import 'package:componenteflutter/src/pages/card.dart';
 import 'package:componenteflutter/src/pages/container.dart';
 import 'package:componenteflutter/src/pages/home.dart';
 import 'package:componenteflutter/src/pages/input.dart';
+import 'package:componenteflutter/src/pages/slider.dart';
 import 'package:flutter/material.dart';
 
 Map<String, WidgetBuilder> getApplicationsRouters() {
@@ -13,6 +14,7 @@ Map<String, WidgetBuilder> getApplicationsRouters() {
     'avatar': (BuildContext context) => AvartarPage(),
     'card': (BuildContext context) => CardsPage(),
     'container': (BuildContext context) => ContainerCustom(),
-    'inputs': (BuildContext context) => InputCustom()
+    'inputs': (BuildContext context) => InputCustom(),
+    'slider': (BuildContext context) => SliderCustom(),
   };
 }

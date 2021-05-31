@@ -29,10 +29,12 @@ class _ContainerCustomState extends State<ContainerCustom> {
         backgroundColor: Colors.green,
       ),
       body: Center(
-        child: Container(
+        child: AnimatedContainer(
           width: _width,
           height: _height,
           decoration: BoxDecoration(color: _color, borderRadius: _border),
+          duration: Duration(seconds: 1),
+          curve: Curves.fastOutSlowIn,
         ),
       ),
       floatingActionButton: FloatingActionButton(

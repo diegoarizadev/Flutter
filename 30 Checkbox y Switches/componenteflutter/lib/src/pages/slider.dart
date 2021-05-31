@@ -29,6 +29,7 @@ class _SliderCustomState extends State<SliderCustom> {
           children: [
             _newSlider(),
             _createCheckBox(),
+            _createSwitch(),
             Expanded(child: _createImage())
           ],
         ),
@@ -74,6 +75,18 @@ class _SliderCustomState extends State<SliderCustom> {
     //   },
     // );
     return CheckboxListTile(
+      title: Text('Bloquear Slider'),
+      value: _blockCheck,
+      onChanged: (data) {
+        setState(() {
+          _blockCheck = data!;
+        });
+      },
+    );
+  }
+
+  _createSwitch() {
+    return SwitchListTile(
       title: Text('Bloquear Slider'),
       value: _blockCheck,
       onChanged: (data) {

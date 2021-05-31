@@ -1,0 +1,35 @@
+{
+    "nombreApp" : "ComponentesFlutter",
+    "rutas" : [
+        {
+            "ruta" : "alert",
+            "icon" : "add_alert",
+            "texto": "Alertas",
+            "subtexto": "Ejemplo de alertas."
+        },
+        {
+            "ruta" : "avatar",
+            "icon" : "accessibility",
+            "texto": "Avatars",
+            "subtexto": "Implementación de CircleAvatar."
+        },
+        {
+            "ruta" : "card",
+            "icon" : "folder_open",
+            "texto": "Cards - Tarjetas",
+            "subtexto": "Implementación de cards."
+        },
+        {
+            "ruta" : "container",
+            "icon" : "build_circle",
+            "texto": "Contenedor Animado",
+            "subtexto": "Ejemplo de contenedor animado."
+        },
+        {
+            "ruta" : "inputs",
+            "icon" : "receipt",
+            "texto": "Inputs",
+            "subtexto": "Implementación de elementos Input"
+        }
+    ]
+}

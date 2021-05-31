@@ -13,6 +13,7 @@ class _InputCustomState extends State<InputCustom> {
   );
 
   String _nombre = '';
+  String _email = '';
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +35,16 @@ class _InputCustomState extends State<InputCustom> {
       body: ListView(
         padding: EdgeInsets.symmetric(
             horizontal: 10.0, vertical: 10.0), //Espacios del textField
-        children: [_createInput(), Divider(), _createPerson()],
+        children: [
+          _createInput(),
+          Divider(),
+          _createEmail(),
+          Divider(),
+          _createPassword(),
+          Divider(),
+          _createPerson(),
+          Divider(),
+        ],
       ),
     );
   }
@@ -78,6 +88,61 @@ class _InputCustomState extends State<InputCustom> {
   Widget _createPerson() {
     return ListTile(
       title: Text('Nombre es : $_nombre'),
+      subtitle: Text('Email es : $_email'),
+    );
+  }
+
+  Widget _createEmail() {
+    return TextField(
+      keyboardType: TextInputType.emailAddress,
+      decoration: InputDecoration(
+        border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(
+                10.0)), //Borde de toda la caja donde va el InputText
+        hintText:
+            'Escribe aquí correo electrónico', //Placeholder o texto de sugerencia
+        labelText: 'Correo Electrónico',
+        helperText: 'Escribe tu correo.', //Label del campo
+        suffixIcon: Icon(
+          Icons.alternate_email,
+          color: Colors.green,
+        ), //Icono al final del TextField
+        icon: Icon(
+          Icons.email,
+          color: Colors.green,
+        ), //Icono al inicio del Textfield
+      ),
+      onChanged: (inputData) {
+        //Captura del texto ingresado en el inputText
+        setState(() => _email = inputData);
+      },
+    );
+  }
+
+  Widget _createPassword() {
+    return TextField(
+      obscureText: true, //Propiedad para campos de tipo Password
+      decoration: InputDecoration(
+        border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(
+                10.0)), //Borde de toda la caja donde va el InputText
+        hintText:
+            'Escribe aquí correo electrónico', //Placeholder o texto de sugerencia
+        labelText: 'Contraseña',
+        helperText: 'Escribe tu contraseña', //Label del campo
+        suffixIcon: Icon(
+          Icons.password,
+          color: Colors.green,
+        ), //Icono al final del TextField
+        icon: Icon(
+          Icons.password_outlined,
+          color: Colors.green,
+        ), //Icono al inicio del Textfield
+      ),
+      onChanged: (inputData) {
+        //Captura del texto ingresado en el inputText
+        setState(() => _email = inputData);
+      },
     );
   }
 }

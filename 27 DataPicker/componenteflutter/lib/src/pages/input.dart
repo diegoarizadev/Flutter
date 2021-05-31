@@ -184,11 +184,13 @@ class _InputCustomState extends State<InputCustom> {
   _selectDate(BuildContext context) async {
     //Se va aretornar ubn Future
     DateTime? picked = await showDatePicker(
-      context: context,
-      initialDate: new DateTime.now(),
-      firstDate: new DateTime(2018),
-      lastDate: new DateTime(2025),
-    );
+        context: context,
+        initialDate: new DateTime.now(),
+        firstDate: new DateTime(2018),
+        lastDate: new DateTime(2025),
+        locale: Locale('es',
+            'ES') //Se configura o especifica la internalizacion o lenguaje a utilizar
+        );
 
     if (picked != null) {
       setState(() {

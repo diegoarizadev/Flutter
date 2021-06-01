@@ -6,15 +6,29 @@ class listViewCustom extends StatefulWidget {
 }
 
 class _listViewCustomState extends State<listViewCustom> {
-  List<int> _listNumbers = [
-    1,
-    2,
-    3,
-    4,
-    5,
-    6,
-    7,
-  ];
+  List<int> _listNumbers = List<int>.empty(growable: true);
+  int _lastItem = 0;
+
+  //Controlador de la lista para manejar el Scroll
+  ScrollController _scrollController = new ScrollController();
+
+  @override
+  void initState() {
+    //Es un metodo del ciclo de vida de la creacion de un StatefulWidget
+    super.initState(); //Hace referencia a la clase state y la inicializa.
+    _addFivePhoto(); //Inicializa el Arreglo.
+    //Se agrergar un Listener para el scroll
+
+    _scrollController.addListener(() {
+      print('Scroll');
+      //Valor o posicion actual en pixeles y maximo en pixeles.
+      if (_scrollController.position.pixels ==
+          _scrollController.position.maxScrollExtent) {
+        //Detecta que esta al final
+        _addFivePhoto();
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +43,7 @@ class _listViewCustomState extends State<listViewCustom> {
 
   _createList() {
     return ListView.builder(
+      controller: _scrollController, //Asigna el controlador
       //Encargado de renderizar todos los elementos, las veces que sea necesario
       itemCount: _listNumbers.length, //cantidad de items.
       itemBuilder: (BuildContext context, int index) {
@@ -41,5 +56,13 @@ class _listViewCustomState extends State<listViewCustom> {
         );
       }, //Forma de como se va a dibujar el elemento
     );
+  }
+
+  void _addFivePhoto() {
+    for (var i = 0; i < 10; i++) {
+      _lastItem++;
+      _listNumbers.add(_lastItem);
+    }
+    setState(() {}); //Redibujar la pantalla
   }
 }

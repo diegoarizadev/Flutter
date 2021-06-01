@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 class listViewCustom extends StatefulWidget {
@@ -8,6 +10,7 @@ class listViewCustom extends StatefulWidget {
 class _listViewCustomState extends State<listViewCustom> {
   List<int> _listNumbers = List<int>.empty(growable: true);
   int _lastItem = 0;
+  bool _Isloading = false;
 
   //Controlador de la lista para manejar el Scroll
   ScrollController _scrollController = new ScrollController();
@@ -25,9 +28,18 @@ class _listViewCustomState extends State<listViewCustom> {
       if (_scrollController.position.pixels ==
           _scrollController.position.maxScrollExtent) {
         //Detecta que esta al final
-        _addFivePhoto();
+        //_addFivePhoto();
+        _fetchData();
       }
     });
+  }
+
+  //Se ejecuta cuando la pagina ha sido destruida o sacada del stack
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    _scrollController.dispose();
   }
 
   @override
@@ -64,5 +76,22 @@ class _listViewCustomState extends State<listViewCustom> {
       _listNumbers.add(_lastItem);
     }
     setState(() {}); //Redibujar la pantalla
+  }
+
+  Future _fetchData() async {
+    //Simular un delay.
+
+    _Isloading = true;
+
+    setState(() {}); //Debe redibujarse porque algo cambio.
+
+    final duration = new Duration(seconds: 2);
+    new Timer(duration,
+        responseHTTP); //Para el metodo responseHTTP, no se agregan los () ya que se esta enviado solo la referencia.
+  }
+
+  void responseHTTP() {
+    _Isloading = false;
+    _addFivePhoto();
   }
 }

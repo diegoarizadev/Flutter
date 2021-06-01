@@ -45,12 +45,13 @@ class _listViewCustomState extends State<listViewCustom> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('ListView'),
-        backgroundColor: Colors.green,
-      ),
-      body: _createList(),
-    );
+        appBar: AppBar(
+          title: Text('ListView'),
+          backgroundColor: Colors.green,
+        ),
+        body: Stack(
+          children: [_createList(), _createLoading()],
+        ));
   }
 
   _createList() {
@@ -92,6 +93,29 @@ class _listViewCustomState extends State<listViewCustom> {
 
   void responseHTTP() {
     _Isloading = false;
+    //Se mueve el scroll para mostrar que existen más registro a mostrar
+    _scrollController.animateTo(_scrollController.position.pixels + 100,
+        duration: Duration(milliseconds: 250), curve: Curves.fastOutSlowIn);
     _addFivePhoto();
+  }
+
+  _createLoading() {
+    if (_Isloading) {
+      return Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [CircularProgressIndicator()],
+          ),
+          SizedBox(
+            height: 20.0,
+          )
+        ],
+      );
+    } else {
+      return Container();
+    }
   }
 }

@@ -55,19 +55,22 @@ class _listViewCustomState extends State<listViewCustom> {
   }
 
   _createList() {
-    return ListView.builder(
-      controller: _scrollController, //Asigna el controlador
-      //Encargado de renderizar todos los elementos, las veces que sea necesario
-      itemCount: _listNumbers.length, //cantidad de items.
-      itemBuilder: (BuildContext context, int index) {
-        final imagen = _listNumbers[index];
-        print('Toma : $imagen');
+    return RefreshIndicator(
+      onRefresh: _getPageOne,
+      child: ListView.builder(
+        controller: _scrollController, //Asigna el controlador
+        //Encargado de renderizar todos los elementos, las veces que sea necesario
+        itemCount: _listNumbers.length, //cantidad de items.
+        itemBuilder: (BuildContext context, int index) {
+          final imagen = _listNumbers[index];
+          print('Toma : $imagen');
 
-        return FadeInImage(
-          placeholder: AssetImage('assets/placeholder.gif'),
-          image: NetworkImage('https://picsum.photos/id/$imagen/500/300'),
-        );
-      }, //Forma de como se va a dibujar el elemento
+          return FadeInImage(
+            placeholder: AssetImage('assets/placeholder.gif'),
+            image: NetworkImage('https://picsum.photos/id/$imagen/500/300'),
+          );
+        }, //Forma de como se va a dibujar el elemento
+      ),
     );
   }
 
@@ -117,5 +120,18 @@ class _listViewCustomState extends State<listViewCustom> {
     } else {
       return Container();
     }
+  }
+
+  Future<Null> _getPageOne() async {
+//simular una peticion HTTP
+    final duration = new Duration(seconds: 2);
+    new Timer(duration, () {
+      //Purga la lista de numeros.
+      _listNumbers.clear();
+      _lastItem++;
+      _addFivePhoto();
+    });
+
+    return Future.delayed(duration);
   }
 }

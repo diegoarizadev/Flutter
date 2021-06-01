@@ -4,6 +4,7 @@ import 'package:componenteflutter/src/pages/card.dart';
 import 'package:componenteflutter/src/pages/container.dart';
 import 'package:componenteflutter/src/pages/home.dart';
 import 'package:componenteflutter/src/pages/input.dart';
+import 'package:componenteflutter/src/pages/listview.dart';
 import 'package:componenteflutter/src/pages/slider.dart';
 import 'package:flutter/material.dart';
 
@@ -16,5 +17,6 @@ Map<String, WidgetBuilder> getApplicationsRouters() {
     'container': (BuildContext context) => ContainerCustom(),
     'inputs': (BuildContext context) => InputCustom(),
     'slider': (BuildContext context) => SliderCustom(),
+    'list': (BuildContext context) => listViewCustom()
   };
 }

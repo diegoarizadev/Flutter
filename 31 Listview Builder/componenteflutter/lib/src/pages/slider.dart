@@ -91,7 +91,7 @@ class _SliderCustomState extends State<SliderCustom> {
       value: _blockCheck,
       onChanged: (data) {
         setState(() {
-          _blockCheck = data!;
+          _blockCheck = data;
         });
       },
     );

@@ -35,7 +35,13 @@
             "ruta" : "slider",
             "icon" : "reorder",
             "texto": "Slider",
-            "subtexto": "Implementación de un slider."
+            "subtexto": "Implementación de un Slider."
+        },
+        {
+            "ruta" : "list",
+            "icon" : "grading",
+            "texto": "ListView",
+            "subtexto": "Implementación de un ListView"
         }
     ]
 }
